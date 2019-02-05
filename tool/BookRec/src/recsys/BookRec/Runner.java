@@ -56,31 +56,17 @@ public class Runner {
 			
 	
 	public void run(){		
-		System.out.println("CrossRec: Recommender System!");
+		System.out.println("BookRec: Book Recommender System!");
 		loadConfigurations();
-		
-//		preprocess();
-		
 		
 		
 		
 //		tenFoldCrossValidation();
 		
+				
+//		extractGoodbooksDataset();
 		
-		printAllRatings();
-		
-		
-		
-//		extractLibraryThingDataset();
-		
-//		extractLastFMDataset();
-		
-//		extractBookCrossingDataset();
-		
-//		int temp = 2;
-//		float avg = (float)2.9999999999995;		
-//		if(temp>avg)System.out.println("It is larger");
-//		else System.out.println("It is smaller");
+		extractBookCrossingDataset();
 		
 		
 	}
@@ -106,9 +92,7 @@ public class Runner {
 		
 		numOfNeighbours = 5;
 		numOfFolds = 10;
-		
-		
-		
+			
 		
 		int step = (int)numOfProjects/numOfFolds;								
 								
@@ -149,86 +133,31 @@ public class Runner {
 	
 	
 	
-	
-	/*count the number of occurrence of a library in the whole dataset*/
-	
-	public int countLibFrequency(String lib) {
-		int count = 0;
-		DataReader reader = new DataReader();
-		Map<Integer, String> projects = new HashMap<Integer, String>();
-		String filename = this.srcDir + "projects.txt";
-		projects = reader.readProjectList(filename);
-		
-		Set<Integer> keySet = projects.keySet();
-		count = 0;
-	
-		for(Integer key:keySet) {
-			String project = projects.get(key);
-			project = project.replaceAll("/", "__");
-			project = "dicth_" + project;
-			count += reader.readOneProject(this.srcDir + project, lib);
-		}		
-				
-		return count;
-	}
-	
-	
-		
-	
-	
-	
-	
-	
-	
 	public void extractBookCrossingDataset() {
 		
 		DataReader reader = new DataReader();		
 		String path = this.srcDir; 		
 		String fname = "BX-Book-Ratings.csv";				
-		reader.parseBookCrossingDataset2(path, fname);
+		reader.parseBookCrossingDataset(path, fname);
 				
 		System.out.println("Finish extracting!");		
 		
 		return;
 	}
+		
 	
 	
 	
-	
-	
-	
-	public void extractLibraryThingDataset() {
+	public void extractGoodbooksDataset() {
 		
 		DataReader reader = new DataReader();		
 		String path = this.srcDir; 		
 		String fname = "ratings.csv";				
-		reader.parseLibraryThingDataset(path, fname);
-				
+		reader.parseGoodbooksDataset(path, fname);				
 		System.out.println("Finish extracting!");		
-		
 		return;
 	}
-	
-	
-	
-	
-	public void printAllRatings() {
 		
-		
-		DataReader reader = new DataReader();		
-		String path = this.srcDir; 		
-		String fname = "users.csv";				
-		reader.countRatings(path, fname);
-				
-		System.out.println("Finish counting!");		
-		
-		
-		
-		return;
-	}
-	
-	
-	
 	
 	
 	

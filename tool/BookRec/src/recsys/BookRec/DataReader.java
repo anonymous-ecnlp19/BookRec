@@ -987,7 +987,7 @@ public class DataReader {
 	
 	
 	
-	public void parseLibraryThingDataset(String path, String fname) {
+	public void parseGoodbooksDataset(String path, String fname) {
 		
 		String line="";
 		String[] parts=null;		

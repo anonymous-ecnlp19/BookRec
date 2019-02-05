@@ -37,16 +37,7 @@ public class RecommendationEngine {
 		this.testingStartPos = teStartPos;
 		this.testingEndPos = teEndPos;	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-			
-	
+		
 	
 	
 	public byte[][] BuildUserItemMatrix(String testingPro, List<String> libSet) {
