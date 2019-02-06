@@ -11,6 +11,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class RecommendationEngine {
 	
@@ -26,7 +29,7 @@ public class RecommendationEngine {
 	private int numOfNeighbours;
 	private int numOfRows;
 	private int numOfCols;
-		
+	private static final Logger log = LogManager.getFormatterLogger(RecommendationEngine.class);
 	public RecommendationEngine(String sourceDir, String suFolder, int numOfNeighbours,	int teStartPos, int teEndPos) {			
 		this.srcDir = sourceDir;
 		this.subFolder = suFolder;		
@@ -55,7 +58,7 @@ public class RecommendationEngine {
 		Set<String> libs = new HashSet<String>();					
 		Map<Integer, String> simProjects = new HashMap<Integer, String>();				
 							
-		System.out.println("BookRec is computing recommendations for " + testingPro);
+		log.info("BookRec is computing recommendations for " + testingPro);
 		filename = testingPro.replace("git://github.com/", "").replace(".git", "").replace("/", "__");			
 		testingFilename = testingPro.replace("git://github.com/", "").replace(".git", "").replace("/", "__");						
 		testingDictFilename = this.srcDir +"dict_" + testingFilename;		
@@ -280,7 +283,7 @@ public class RecommendationEngine {
 														
 							sim=(double)Math.sqrt(v1)/(Math.sqrt(v2)+Math.sqrt(v3));
 
-							System.out.println("Sim is: " + UserItemMatrix[numOfNeighbours][k]);
+							log.info("Sim is: " + UserItemMatrix[numOfNeighbours][k]);
 														
 							tmp1+=sim*(UserItemMatrix[numOfNeighbours][k]-avgUserRating);
 							tmp2+=sim;

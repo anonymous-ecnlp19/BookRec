@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 class ValueComparator implements Comparator<String> {
 
@@ -30,7 +33,8 @@ class ValueComparator implements Comparator<String> {
 
 
 public class Runner {
-	
+
+	private static final Logger log = LogManager.getFormatterLogger(Runner.class);
 	private String srcDir;	
 	private String subFolder;
 	private int numOfProjects;
@@ -56,7 +60,7 @@ public class Runner {
 			
 	
 	public void run(){		
-		System.out.println("BookRec: Book Recommender System!");
+		log.info("BookRec: Book Recommender System!");
 		loadConfigurations();
 				
 		tenFoldCrossValidation();
@@ -81,7 +85,7 @@ public class Runner {
 								
 		for(int i=0;i<10;i++) {	
 			
-			System.out.print("i: " + i);
+			log.info("i: " + i);
 			int trainingStartPos1 = 1;			
 			int trainingEndPos1 = i*step;			
 			int trainingStartPos2 = (i+1)*step+1;
@@ -115,14 +119,14 @@ public class Runner {
 	
 	
 	
-	public void extractBookCrossingDataset() {
+	public void extractBookCrossingDatasetO() {
 		
 		DataReader reader = new DataReader();		
 		String path = this.srcDir; 		
 		String fname = "BX-Book-Ratings.csv";				
 		reader.parseBookCrossingDataset(path, fname);
 				
-		System.out.println("Finish extracting!");		
+		log.info("Finish extracting!");		
 		
 		return;
 	}
@@ -136,7 +140,7 @@ public class Runner {
 		String path = this.srcDir; 		
 		String fname = "ratings.csv";				
 		reader.parseGoodbooksDataset(path, fname);				
-		System.out.println("Finish extracting!");		
+		log.info("Finish extracting!");		
 		return;
 	}
 		

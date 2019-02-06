@@ -13,11 +13,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 
 public class DataReader {
 
-	
+	private static final Logger log = LogManager.getFormatterLogger(DataReader.class);
 	
 	public DataReader() {		
 		
@@ -719,7 +722,7 @@ public class DataReader {
 				ratings.put(bookID, rating);				
 				bookRatings.put(userID, ratings);
 			}					
-			System.out.println("number of users: " + bookRatings.size() );			
+			log.info("number of users: " + bookRatings.size() );			
 			reader.close();
 			
 			Set<String> keySet = bookRatings.keySet();
@@ -864,7 +867,7 @@ public class DataReader {
 				ratings.put(bookID, rating);				
 				bookRatings.put(userID, ratings);
 			}					
-			System.out.println("number of users: " + bookRatings.size() );			
+			log.info("number of users: " + bookRatings.size() );			
 			reader.close();
 			
 			Set<String> keySet = bookRatings.keySet();
@@ -900,7 +903,7 @@ public class DataReader {
 				}			
 			}
 				
-			System.out.println("The new size is: " + newBookRatings.size());			
+			log.info("The new size is: " + newBookRatings.size());			
 			keySet = newBookRatings.keySet();
 			
 			
