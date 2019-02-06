@@ -9,8 +9,6 @@ _Memory-based collaborative-filtering techniques: A case study with online books
 
 BookRec is a collaborative-filtering recommender system that provides readers with recommendation of books that are suitable for the needs.
 
-We incorporate these ideas in a new context-aware collaborative filtering recommender system that mines OSS repositories to provide developers with API **F**uncti**O**n **C**alls and **US**age patterns: FOCUS. Our approach employs a new model to represent mutual relationships between projects and collaboratively mines API usage from the most similar projects.
-
 ## Repository Structure
 
 This repository is organized as follows:
