@@ -9,9 +9,17 @@ Please be aware that the execution of BookRec takes a long time. First, you need
   - (optional) Bash for running all evaluations automatically
 
 ## Running the tool
-To start the evaluation of BookRec using the default `evaluation.properties` file (see below), run the following command:
+To start the evaluation of BookRec using the default `evaluation.properties` file (BookCrossingUB), run the following command:
 
 ```
 mvn clean compile exec:java -Dexec.mainClass=recsys.BookRec.Runner
 ```
 
+## `evaluation.properties`
+We use a evaluation`.properties` file to specify the root folder of BookRec. For instance, the default `evaluation.properties` performs evaluation on the BookCrossing dataset with ubCF:
+
+```
+# Root directory
+sourceDirectory=../../BookRec/datasets/BookCrossingUB/
+
+```

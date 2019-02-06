@@ -15,7 +15,7 @@ We evaluate two CF techniques to build a book recommender system. In particular,
 
 This repository is organized as follows:
 
-* The [tool](./tool) directory contains the implementation of the BookRec tool written in Java:
+* The [tool](./tool/BookRec/) directory contains the implementation of the BookRec tool written in Java:
 * The [datasets](./dataset) directory contains the 4 datasets described in the paper and their corresponding working directories as follows:
 	* [BookCrossingIB](./datasets/BookCrossingIB): metadata and working folders for the BookCrossing dataset used with ibCF
 	* [BookCrossingUB](./datasets/BookCrossingUB): metadata and working folders for the BookCrossing dataset used with ubCF
@@ -27,8 +27,7 @@ We use a `.properties` file to specify the root folder of BookRec. For instance,
 
 ```
 # Root directory
-sourceDirectory=<root>/BookRec/datasets/BookCrossingUB/
+sourceDirectory=../../BookRec/datasets/BookCrossingUB/
 
 ```
-You need to replace `<root>` with the directory where you have cloned the BookRec repo from GitHub, for example: `/home/admin/Desktop/` 
 
