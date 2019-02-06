@@ -30,5 +30,5 @@ We use a `.properties` file to specify the root folder of BookRec. For instance,
 sourceDirectory=<root>/BookRec/datasets/BookCrossingUB/
 
 ```
-You need to replace <root> with the directory where you have cloned the BookRec repo from GitHub, for example: `/home/admin/Desktop/` 
+You need to replace `<root>` with the directory where you have cloned the BookRec repo from GitHub, for example: `/home/admin/Desktop/` 
 
