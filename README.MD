@@ -21,13 +21,3 @@ This repository is organized as follows:
 	* [BookCrossingUB](./datasets/BookCrossingUB): metadata and working folders for the BookCrossing dataset used with ubCF
 	* [GoodbooksIB](./datasets/GoodbooksIB): metadata and working folders for the Goodbooks dataset used with ibCF
 	* [GoodbooksUB](./datasets/GoodbooksUB): metadata and working folders for the Goodbooks dataset used with ubCF
-
-## `evaluation.properties`
-We use a `.properties` file to specify the root folder of BookRec. For instance, the default `evaluation.properties` performs evaluation on the BookCrossing dataset with ubCF:
-
-```
-# Root directory
-sourceDirectory=../../BookRec/datasets/BookCrossingUB/
-
-```
-
