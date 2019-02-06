@@ -21,7 +21,7 @@ This repository is organized as follows:
 	* [GoodbooksIB](./datasets/GoodbooksIB): metadata and working folders for the Goodbooks dataset used with ubCF
 
 ## `evaluation.properties`
-The evaluation of FOCUS is configured with a `.properties` file that specifies the root folder (i) the dataset (ii) the configuration and (iii) the validation technique to be used. For instance, the default `evaluation.properties` performs evaluation on the BookCrossing dataset with ubCF:
+We use a `.properties` file to specify the root folder of BookRec. For instance, the default `evaluation.properties` performs evaluation on the BookCrossing dataset with ubCF:
 
 ```
 # Root directory

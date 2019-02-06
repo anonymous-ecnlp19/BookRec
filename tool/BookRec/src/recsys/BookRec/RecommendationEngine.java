@@ -55,7 +55,7 @@ public class RecommendationEngine {
 		Set<String> libs = new HashSet<String>();					
 		Map<Integer, String> simProjects = new HashMap<Integer, String>();				
 							
-		System.out.println("CrossRec is computing recommendations for " + testingPro);
+		System.out.println("BookRec is computing recommendations for " + testingPro);
 		filename = testingPro.replace("git://github.com/", "").replace(".git", "").replace("/", "__");			
 		testingFilename = testingPro.replace("git://github.com/", "").replace(".git", "").replace("/", "__");						
 		testingDictFilename = this.srcDir +"dict_" + testingFilename;		
@@ -90,14 +90,7 @@ public class RecommendationEngine {
 		this.numOfCols = libraries.size();
 							
 		UserItemMatrix = new byte[this.numOfRows][this.numOfCols];
-		
-		
-		
-		
-		
 				
-		
-		
 		/*assign the user-item matrix*/
 		for(int i=0;i<numOfNeighbours;i++) {				
 			Set<String> tmpLibs = allNeighbourLibs.get(i);								
@@ -108,9 +101,6 @@ public class RecommendationEngine {
 				else UserItemMatrix[i][j]=0;				
 			}
 		}					
-		
-		
-		
 		
 		/*Here is the test project and it needs recommendation. It is located at the end of the list.*/
 		
@@ -222,17 +212,6 @@ public class RecommendationEngine {
 	
 		return;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	/*Recommends libraries to test projects using the item-based collaborative-filtering technique*/

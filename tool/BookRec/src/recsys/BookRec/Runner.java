@@ -58,37 +58,20 @@ public class Runner {
 	public void run(){		
 		System.out.println("BookRec: Book Recommender System!");
 		loadConfigurations();
-		
-		
-		
-//		tenFoldCrossValidation();
-		
 				
-//		extractGoodbooksDataset();
-		
-		extractBookCrossingDataset();
-		
-		
+		tenFoldCrossValidation();
+						
+//		extractGoodbooksDataset();		
+//		extractBookCrossingDataset();		
 	}
 		
 	/*Ten-fold cross validation*/
-	
-	public void getProjectAlternativesWithSimilarAPIs(String inputProject) {
 		
-		
-				
-		
-		
-		return;
-	}
-	
-	
 	public void tenFoldCrossValidation() {
 		
 		numOfProjects = 11692;//BookCrossing
 //		numOfProjects = 10325;//Goodbooks	
-//		numOfProjects = 1472;//IOT
-		
+	
 		
 		numOfNeighbours = 5;
 		numOfFolds = 10;
@@ -121,10 +104,9 @@ public class Runner {
 						
 			RecommendationEngine engine = new RecommendationEngine(this.srcDir,this.subFolder,numOfNeighbours,testingStartPos,testingEndPos);
 					
-		    engine.ItemBasedRecommendation();
-			
-						
-//			engine.UserBasedRecommendation2();			
+//		    engine.ItemBasedRecommendation();
+									
+			engine.UserBasedRecommendation();			
 			
 		}
 		

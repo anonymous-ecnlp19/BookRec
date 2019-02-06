@@ -112,21 +112,6 @@ public class DataReader {
 		return count;				
 	}
 		
-	
-	
-	
-	
-	
-	
-	
-		
-	
-	
-	
-	
-		
-		
-	
 	public Map<String, Integer> readDictionary(String filename) {							
 		Map<String, Integer> vector = new HashMap<String, Integer>();		
 		String line = null;		
@@ -329,7 +314,6 @@ public class DataReader {
 				} else {
 					/*put users into the dictionary*/
 					
-//					if(getAlsoUsers || artifact.contains("git://github.com/"))ret.put(key, artifact);
 					if(getAlsoUsers || !artifact.contains("#DEP#"))ret.put(key, artifact);
 				}									
 			}
@@ -342,23 +326,6 @@ public class DataReader {
 		}						
 		return ret;		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -453,20 +420,7 @@ public class DataReader {
 		}						
 		return ret;		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	public void getProjectDetails(String filename, Map<String,Set<String>> methodInvocations) {		
 		Set<String> vector = null;				
 		String line = null;		
@@ -772,8 +726,6 @@ public class DataReader {
 			
 			
 			
-			
-			
 			Set<String> newRatings;
 			
 			for(String key:keySet){
@@ -805,130 +757,20 @@ public class DataReader {
 				}			
 			}
 			
-						
-			
-			
 			
 			keySet = newBookRatings.keySet();
 			
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		return;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void parseBookCrossingDataset2(String path, String fname) {
-		
-		String line="";
-		String[] parts=null;		
-		String filename = path + fname;		
-		
-		Map<String,Map<String,Integer>> bookRatings = new HashMap<String,Map<String,Integer>>();
-		
-		Map<String,Integer> ratings;
-		
-		try {
-			
-			
-			Set<String> Users = new HashSet<String>();
-			Set<String> Items = new HashSet<String>();
-			
-			
-			BufferedReader reader = new BufferedReader(new FileReader(filename));			
-			while ((line = reader.readLine()) != null) {				
-				line = line.trim();
-				parts = line.split(";");				
-				String userID = parts[0].trim();
-				String bookID = parts[1].trim();
-				int rating = Integer.parseInt(parts[2].trim());
-				
-				Users.add(userID);
-				Items.add(bookID);
-												
-				if(bookRatings.containsKey(userID)) {
-					ratings = bookRatings.get(userID);										
-				} else {
-					ratings = new HashMap<String,Integer>();			
-				}				
-				ratings.put(bookID, rating);				
-				bookRatings.put(userID, ratings);
-			}					
-			System.out.println("number of users: " + bookRatings.size() );			
-			reader.close();
-			
-			
-			Set<String> keySet = bookRatings.keySet();
-			
-			Set<String> users = new HashSet<String>();
-			
-			
-			
-//			System.out.println("The number of users: " + Users.size());			
-//			System.out.println("The number of items: " + Items.size());	
-			
-			
-			
-			
-			
-			for(String key:keySet){			
-				ratings = bookRatings.get(key);
-				float total = 0;
-				float avg = 0;
-				
-				int size = ratings.size();										
-				
-				if(size>10) {					
-					for(int r:ratings.values()){
-						total+=r;
-					}
-					
-					avg = (float)total/size;								
-					if(avg>0) {						
-						users.add(key);						
-					}	
-				}			
-			}
-			
-			
-			
-			
-			
-			
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"users.csv"));
 			
-			for(String user:users) {					
-								
-				ratings = bookRatings.get(user);			
-				
-				Set<String> books = ratings.keySet();
-										
+			for(String key:keySet) {					
+				String user = key;				
 				writer.append(user);							
 				writer.newLine();
 				writer.flush();
 				
 				int index = 1;
-
+							
 				BufferedWriter writer2 = new BufferedWriter(new FileWriter(path+"dict_"+user));								
 				String content = Integer.toString(index) + "\t" + user;								
 				writer2.append(content);							
@@ -936,14 +778,18 @@ public class DataReader {
 				writer2.flush();					
 				
 				BufferedWriter writer3 = new BufferedWriter(new FileWriter(path+"graph_"+user));
-							
+				
+				
+				newRatings = newBookRatings.get(key);
+				
 				int index2 = 2;
-									
-				for(String bookID:books) {
-					
-					String rating = Integer.toString(ratings.get(bookID));
+				
+				for(String r:newRatings) {
+											
+												
+					String bookID = r;
 										
-					content = Integer.toString(index2) + "\t" + "#DEP#"+bookID+"%"+rating;
+					content = Integer.toString(index2) + "\t" + "#DEP#"+bookID;
 					
 					writer2.append(content);							
 					writer2.newLine();
@@ -955,15 +801,17 @@ public class DataReader {
 					writer3.newLine();
 					writer3.flush();
 					
-					index2++;	
+					index2++;										
+								
 				}
 				writer2.close();				
-				writer3.close();							
+				writer3.close();				
 			}
 			
 			
-			
 			writer.close();
+
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -977,14 +825,7 @@ public class DataReader {
 		return;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	
 	public void parseGoodbooksDataset(String path, String fname) {
@@ -1027,14 +868,7 @@ public class DataReader {
 			reader.close();
 			
 			Set<String> keySet = bookRatings.keySet();
-			
-			
-			
-			
-			
-			
-			
-			
+								
 			Set<String> newRatings;
 			
 			for(String key:keySet){
@@ -1065,93 +899,61 @@ public class DataReader {
 					}	
 				}			
 			}
-		
-			
-			
+				
 			System.out.println("The new size is: " + newBookRatings.size());			
 			keySet = newBookRatings.keySet();
-			reader.close();
 			
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		return;
-	}
-	
-	
-	
-	public void countRatings(String path, String fname) {
-		
-		
-		String filename = path + fname;		
-		String line = "";
-		String[] parts = null;
-		
-		Map<String,Integer> ratings = new HashMap<String,Integer>();
-		
-		
-		try {
-						
-			BufferedReader reader = new BufferedReader(new FileReader(filename));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"users.csv"));
 			
-			Set<String> users = new HashSet<String>();
-			
-			while ((line = reader.readLine()) != null) {
-				line = line.trim();
-				users.add(line);
-			}
-			reader.close();
-			
-			BufferedWriter writer = new BufferedWriter(new FileWriter(path+"ratings2.csv"));
-			
-			reader = new BufferedReader(new FileReader(path + "ratings.csv"));
-			
-//			writer.append("Score,System");
-			
-			while ((line = reader.readLine()) != null) {
-				line = line.trim();
-				parts = line.split(",");
-								
-				String userID = parts[0].trim();
-				String rating = parts[2].trim();
-				
-				int count = 0;
-				if(ratings.containsKey(rating))count = ratings.get(rating) + 1;
-				else count = 1;
-				
-				ratings.put(rating, count);
-				
-				
-			}
-
-			Set<String> keySet = ratings.keySet();
-			
-			for(String key:keySet) {
-				String content = key + "\t" + ratings.get(key);
-				writer.append(content);							
+			for(String key:keySet) {					
+				String user = key;				
+				writer.append(user);							
 				writer.newLine();
 				writer.flush();				
+				int index = 1;
+				
+				
+				BufferedWriter writer2 = new BufferedWriter(new FileWriter(path+"dict_"+user));								
+				String content = Integer.toString(index) + "\t" + user;								
+				writer2.append(content);							
+				writer2.newLine();
+				writer2.flush();					
+				
+				BufferedWriter writer3 = new BufferedWriter(new FileWriter(path+"graph_"+user));
+				
+				
+				newRatings = newBookRatings.get(key);
+				
+				int index2 = 2;
+				
+				for(String r:newRatings) {											
+					String bookID = r;										
+					content = Integer.toString(index2) + "\t" + "#DEP#"+bookID;					
+					writer2.append(content);							
+					writer2.newLine();
+					writer2.flush();					
+					content =  "1#" + Integer.toString(index2);					
+					writer3.append(content);							
+					writer3.newLine();
+					writer3.flush();					
+					index2++;						
+								
+				}
+				
+				writer2.close();				
+				writer3.close();					
 			}
-			reader.close();			
+			
 			writer.close();		
+			reader.close();	
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		
-		
-		
-		return;		
+		}		
+		return;
 	}
 	
 }

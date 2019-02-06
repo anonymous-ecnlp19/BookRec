@@ -149,8 +149,6 @@ public class Graph {
 			while((line=reader.readLine())!=null) {											
 				pair = line.trim().split("#");			
 				
-				/*WARNING: Only for temporary use, startNode must be pair[0] and endNode must be pair[1]*/
-				
 				int startNode = Integer.parseInt(pair[0].trim());
 				int endNode = Integer.parseInt(pair[1].trim());				
 								
@@ -193,12 +191,8 @@ public class Graph {
 			artifact = dictionary.get(startNode);				
 			idStartNode = extractKey(artifact);
 				
-//			if(dictionary.get(startNode).contains("ostrich_2_9_29_1_0"))System.out.println("The project is here!");
-			
 			for(Integer endNode:outlinks){							
 				artifact = dictionary.get(endNode);							
-					
-//				if(artifact.contains("scala-json_2.9.2"))System.out.println("#DEP#scala-json_2.9.2 is found here");
 				
 				idEndNode = extractKey(artifact);																					
 				if(this.OutLinks.containsKey(idStartNode)){					
@@ -222,67 +216,6 @@ public class Graph {
 		}								
 		nodeCount = nodes.size();		
 	}
-	
-	
-	
-	
-//	public Map<String, Integer> combine(Graph graph, Map<String, Integer> dictionary1, Map<Integer, String> dictionary2){
-//	
-//		Map<String,Set<String>> tmpOutLinks = graph.getOutLinks();
-//		
-//		dictionary = new HashMap<String, Integer>();		
-//		dictionary = dictionary1;
-//							
-//		Set<String> outlinks1 = new HashSet<String>();		
-//		Set<String> outlinks2 = new HashSet<String>();
-//		
-//		Set<String> key = tmpOutLinks.keySet();		
-//				
-//		String address = "";
-//		String idEndNode = "", idStartNode = "";		
-//		
-//		counter = new SynchronizedCounter(nodeCount-1);
-//		
-//		for(String startNode:key){				
-//			outlinks1 = tmpOutLinks.get(startNode);
-//			address = dictionary2.get(Integer.parseInt(startNode));	
-//			idStartNode = extractKey(address);
-//															
-//			for(String endNode:outlinks1){							
-//				address = dictionary2.get(Integer.parseInt(endNode));
-//				idEndNode = extractKey(address);				
-//																						
-//				if(this.OutLinks.containsKey(idStartNode)){					
-//					outlinks2 = this.OutLinks.get(idStartNode);
-//					outlinks2.add(idEndNode);
-//					this.OutLinks.put(idStartNode, outlinks2);					
-//				} else {				
-//					outlinks2 = new HashSet<String>();
-//					outlinks2.add(idEndNode);
-//					this.OutLinks.put(idStartNode, outlinks2);
-//				}								
-//			}				
-//		}	
-//		
-//				
-//		Set<String> nodes = new HashSet<String>();	
-//		
-//		key = this.OutLinks.keySet();	
-//		
-//		for(String startNode:key){	
-//			nodes.add(startNode);
-//			outlinks1 = this.OutLinks.get(startNode);
-//			
-//			for(String endNode:outlinks1){	
-//				nodes.add(endNode);
-//			}		
-//		}
-//								
-//		nodeCount = nodes.size();	
-//		
-//		return dictionary;
-//	}
-	
 	
 		
 	private int extractKey(String s) {		
