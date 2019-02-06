@@ -7,9 +7,9 @@ _Memory-based collaborative-filtering techniques: A case study with online books
 
 ## Introduction
 
-BookRec is a collaborative-filtering recommender system that provides readers with recommendation of books that are suitable for the needs.
+BookRec is a collaborative-filtering recommender system that provides readers with recommendation of books that are relevant to their preferences.
 
-In this paper, we evaluate two CF techniques to build a book recommender system. In particular, we conduct an empirical study using two datasets: BookCrossing and Goodbooks. To thoroughly study the performance, we make use of different quality indicators, i.e., accuracy(precision, recall, and nDCG), diversity (entropy, coverage), and novelty (EPC). Eventually, we obtained some _serendipitous_ outcomes. In contrast to many existing studies, we found out that compared to the user-based collaborative-filtering technique (ubCF), the item-based collaborative-filtering technique (ibCF) does not always have a superior performance as it has been usually perceived. Our experimental results show that the performance of the two techniques very much depends on the characteristics of the datasets as well as the sparsity of the user-item matrix. 
+We evaluate two CF techniques to build a book recommender system. In particular, we conduct an empirical study using two datasets: BookCrossing and Goodbooks. To thoroughly study the performance, we make use of different quality indicators, i.e., accuracy(precision, recall, and nDCG), diversity (entropy, coverage), and novelty (EPC). Eventually, we obtained some _serendipitous_ outcomes. In contrast to many existing studies, we found out that compared to the user-based collaborative-filtering technique (ubCF), the item-based collaborative-filtering technique (ibCF) does not always have a superior performance as it has been usually perceived. Our experimental results show that the performance of the two techniques very much depends on the characteristics of the datasets as well as the sparsity of the user-item matrix. 
 
 ## Repository Structure
 
