@@ -1,7 +1,7 @@
 # BookRec 
 
-This folder contains the implementation of BookRec. 
-Please be aware that the execution of BookRec takes a long time. First, you need to wait some minutes until you see something running. Afterwards, the similarity computation may take up to 4 hours. For instance, with the BookCrossing dataset, the similarity computation will finish after 3 hours.
+This folder contains the implementation of BookRec. In order to run the tool, your computer should meet the following requirements.
+
 ## Requirements
 
   - Apache Maven >= 3.0
@@ -14,6 +14,7 @@ To start the evaluation of BookRec using the default `evaluation.properties` fil
 ```
 mvn clean compile exec:java -Dexec.mainClass=recsys.BookRec.Runner
 ```
+Please be aware that the execution of BookRec takes a long time. First, you need to wait some minutes until you see something running in your console. Afterwards, there are two phase: Computing similarities and producing recommendation. The former may take up to 4 hours depending on your computer's performance as well as the dataset you are experimenting. Whereas the latter runs in a shorter time, e.g., around half an hour. For instance, with the BookCrossing dataset, the similarity computation will finish after 3 hours and the recommendation phase finishes after 20 minutes.
 
 ## `evaluation.properties`
 We use a evaluation`.properties` file to specify the root folder of BookRec. For instance, the default `evaluation.properties` performs evaluation on the BookCrossing dataset with ubCF:
