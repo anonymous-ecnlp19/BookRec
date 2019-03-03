@@ -1,9 +1,9 @@
 
 # BookRec
 
-This repository contains the source code implementation of BookRec and the datasets for our paper submitted to ECNLP2019:
+This repository contains the source code implementation of BookRec and the datasets for our paper submitted to FAiSE 2019:
 
-_Memory-based collaborative-filtering techniques: A case study with online books_
+_Building a flexible information system to support booklovers: A case study with collaborative-filtering recommendation techniques_
 
 ## Introduction
 
